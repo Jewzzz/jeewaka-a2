@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ leave.reason }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="start" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-text>
+      <!-- <span *ngIf="leave.permission ==1;">
+        <b>Permission:</b>
+        <ion-badge color="primary">yes</ion-badge>
+      </span> -->
+      <!-- <ng-template *ngIf="leave.permission == 1; else elseblock">
+        <ion-button slot="end">
+          <ion-badge color="primary">yes</ion-badge>
+        </ion-button>
+      </ng-template>
+
+      <ng-template #elseblock>
+        <ion-button slot="end">
+          <ion-badge color="danger">Pending</ion-badge>
+        </ion-button>
+      </ng-template> -->
+      <!-- <ng-template *ngIf="leave.permission">
+        <ion-button slot="end">
+          <ion-badge color="primary">yes</ion-badge>
+        </ion-button>
+      </ng-template>
+
+      <ng-template *ngIf="!leave.permission">
+        <ion-button slot="end">
+          <ion-badge color="danger">Pending</ion-badge>
+        </ion-button>
+      </ng-template> -->
+
+        <br><br>
+      <span><b>EmpNo:</b>  {{ leave.empNo }}</span><br><br>
+      <span><b>EmpName:</b>  {{ leave.empName }}</span> <br><br>
+      <span><b>LeaveType:</b>  {{ leave.leaveType }}</span> <br><br>
+      <span><b>leaveCatogory:</b>  {{ leave.leaveCatogory }}</span> <br><br>
+      <span><b>reason:</b>  {{ leave.reason }}</span> <br><br>
+      <span><b>date:</b>  {{ leave.date }}</span> <br><br>
+
+      <br><br>
+    </ion-text>
+
+    <ion-button (click)="openEditModal()" expand="block">Edit</ion-button>
+
+    <ion-button (click)="onDeleteLeave()" expand="block" class="danger">Delete</ion-button>
+  </div>
+
+</ion-content>

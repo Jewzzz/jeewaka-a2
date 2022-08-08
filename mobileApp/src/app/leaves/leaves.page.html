@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Leave List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/add-leave">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let leave of leaves$|async">
+    <ion-item>
+      <ion-label>
+        {{ leave.leaveType }}
+        <br>
+        <small>{{ leave.date }} </small>
+      </ion-label>
+      <ion-button slot="end" *ngIf="leave.permission === 1; else elseblock">
+        <ion-badge color="primary">yes</ion-badge>
+      </ion-button>
+      <ng-template #elseblock>
+        <ion-button slot="end">
+          <ion-badge color="danger">Pending</ion-badge>
+        </ion-button>
+      </ng-template>
+
+      <ion-button fill="outline" slot="end" (click)="openDeatailModal(leave)">View</ion-button>
+    </ion-item>
+
+    <ion-card-content>
+      {{ leave.reason }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

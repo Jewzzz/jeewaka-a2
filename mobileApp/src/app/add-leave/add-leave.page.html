@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ isEditMode ? 'Update' : 'Add' }} leave</ion-title>
+    <ion-buttons slot="start" *ngIf="!isEditMode">
+      <ion-back-button defaultHref="leaves"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" *ngIf="isEditMode">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]='form'>
+    <ion-item>
+      <ion-label position="floating">Emp No</ion-label>
+      <ion-input type="text" formControlName='empNo'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Emp Name</ion-label>
+      <ion-input type="text" formControlName='empName'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select placeholder="Leave Type" formControlName='leaveType'>
+        <ion-select-option value="Full-Day">Full-Day</ion-select-option>
+        <ion-select-option value="Half-Day">Half-Day</ion-select-option>
+        <ion-select-option value="Short-Leave">Short-Leave</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="Leave Catogory" formControlName='leaveCatogory'>
+        <ion-select-option value="Medical">Medical</ion-select-option>
+        <ion-select-option value="Personal">Personal</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Reason</ion-label>
+      <ion-input type="textarea" formControlName='reason'></ion-input>
+    </ion-item>
+    <ion-item>
+      <!-- <ion-label position="floating">Date</ion-label> -->
+      <ion-input type="date" formControlName='date' placeholder="Select Date"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-select placeholder="Permission" formControlName='permission'>
+        <ion-select-option value="Yes">Yes</ion-select-option>
+        <ion-select-option value="No">No</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+
+    <ion-item *ngIf="isEditMode">
+      <ion-label position="floating">Permission</ion-label>
+      <ion-input type="number" formControlName='permission'></ion-input>
+    </ion-item>
+
+    <ion-button  expand="block" (click)="submitLeave()" [disabled]="form.invalid">
+      {{ isEditMode ? 'Update' : 'Save' }} Leave
+    </ion-button>
+  </form>
+
+</ion-content>
